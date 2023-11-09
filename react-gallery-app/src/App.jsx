@@ -10,15 +10,14 @@ import { Navigate } from 'react-router-dom'
 
 
 function App() {
-  // const [count, setCount] = useState(0)
-
   return (
     <div className='container'>
       <Routes>
       <Route path='/' element={<Navigate to='/cats' />} />
-        <Route path='/cats' element={<PhotoList />}></Route>
-        <Route path='/dogs' element={<PhotoList />}></Route>
-        <Route path='/computers' element={<PhotoList />}></Route>
+        <Route path='/cats' element={<PhotoList />} />
+        <Route path='/dogs' element={<PhotoList />} />
+        <Route path='/computers' element={<PhotoList />} />
+        <Route path='/search:query' element={<PhotoList />}/>
       </Routes>
       <Search />
       <Nav />
