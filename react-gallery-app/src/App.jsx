@@ -1,3 +1,4 @@
+// Imports Components, Files, and Hooks
 import { useEffect, useState } from 'react'
 import axios from 'axios';
 import './App.css'
@@ -11,6 +12,7 @@ import { Navigate } from 'react-router-dom'
 
 
 function App() {
+ // Creates States and Setter Funcs
   const [cats, setCats] = useState([]);
   const [dogs, setDogs] = useState([]);
   const [computers, setComputers] = useState([]);
@@ -24,7 +26,6 @@ function App() {
     // axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
-        console.log(response.data.photos.photo)
         if (activeFetch) {
           if (query === "dogs") {
             setDogs(response.data.photos.photo)
@@ -44,14 +45,29 @@ function App() {
   };
   
   useEffect(() => {
-    fetchData(query), [query];
-  })
-
+    if (!cats.length) {
+      fetchData("cats");
+    }
+    if (!dogs.length) {
+      fetchData("dogs");
+    }
+    if (!computers.length) {
+      fetchData("computers");
+    }
+    fetchData(query);
+  // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [query]);
   
- 
+  const handleQueryChange = (query) => {
+    setQuery(query);
+    fetchData(query);
+  };
+
  
   return (
     <div className='container'>
+      <Search changeQuery={handleQueryChange}/>
+      <Nav />
       <Routes>
       <Route path='/' element={<Navigate to='/cats' />} />
         <Route path='/cats' element={<PhotoList data={cats} query={"cats"} />} />
@@ -59,10 +75,9 @@ function App() {
         <Route path='/computers' element={<PhotoList data={computers} query={"computers"}/>} />
         <Route path='/search:query' element={<PhotoList data={photos} query={"photos"}/>}/>
       </Routes>
-      <Search />
-      <Nav />
+      
+      
       <div className='photo-container'>
-        <h2>Results</h2>
         <Photo />
       </div>
     </div>

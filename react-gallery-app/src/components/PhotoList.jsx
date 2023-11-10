@@ -1,4 +1,3 @@
-import React from "react";
 import Photo from "./Photo"
 
 const PhotoList = ({data}) => {
@@ -6,6 +5,7 @@ const PhotoList = ({data}) => {
   photos = data.map((photo) => (<Photo url={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_n.jpg`} key={photo.id} /> ))
   return (
     <ul>
+      <h2>Results</h2>
       {photos}
     </ul>
       
