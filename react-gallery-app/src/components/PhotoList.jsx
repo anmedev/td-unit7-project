@@ -3,6 +3,7 @@ import PhotoNotFound from "./PhotoNotFound";
 
 const PhotoList = ({data}) => {
   let photos;
+  console.log(data)
   if (data.length > 0) {
     photos = data.map((photo) => (<Photo url={`https://farm${photo.farm}.staticflickr.com/${photo.server}/${photo.id}_${photo.secret}_n.jpg`} key={photo.id} /> ))
   } else {
@@ -10,12 +11,12 @@ const PhotoList = ({data}) => {
   }
  
   return (
-    <ul>
+    <div className="photo-container">
       <h2>Results</h2>
-      {photos}
-    </ul>
-      
-  )
+      <ul>{photos}</ul>
+    </div>
+  );
+
 }
 
 export default PhotoList

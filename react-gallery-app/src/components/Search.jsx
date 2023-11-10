@@ -1,6 +1,8 @@
 import { useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 const Search = ({changeQuery}) => {
     const [query, setQuery] = useState("");
+    const navigate = useNavigate();
 
     const handleInput = (e) => {
         setQuery(e.target.value);
@@ -9,6 +11,7 @@ const Search = ({changeQuery}) => {
     const handleSubmit = (e) => {
         e.preventDefault();
         changeQuery(query);
+        navigate(`/search/${query}`);
         e.currentTarget.reset();
     }
     return (
