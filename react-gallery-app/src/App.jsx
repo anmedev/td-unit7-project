@@ -57,15 +57,12 @@ function App() {
   
   const handleQueryChange = (query) => {
     setQuery(query);
-    fetchData(query);
   };
 
  
   return (
     <div className='container'>
-      <Search 
-      changeQuery={handleQueryChange}
-      fetchData={fetchData}/>
+      <Search changeQuery={handleQueryChange} />
       <Nav />
       <Routes>
       <Route path='/' element={<Navigate to='/cats' />} />
