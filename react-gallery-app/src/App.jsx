@@ -63,14 +63,16 @@ function App() {
  
   return (
     <div className='container'>
-      <Search changeQuery={handleQueryChange}/>
+      <Search 
+      changeQuery={handleQueryChange}
+      fetchData={fetchData}/>
       <Nav />
       <Routes>
       <Route path='/' element={<Navigate to='/cats' />} />
         <Route path='/cats' element={<PhotoList data={cats} query={"cats"} />} />
         <Route path='/dogs' element={<PhotoList data={dogs} query={"dogs"}/>} />
         <Route path='/computers' element={<PhotoList data={computers} query={"computers"}/>} />
-        <Route path='/search:query' element={<PhotoList data={photos} query={"photos"}/>}/>
+        <Route path='/search/:query' element={<PhotoList data={photos} query={"photos"}/>}/>
       </Routes>
       
       

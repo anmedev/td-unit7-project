@@ -1,6 +1,6 @@
 import { useState } from 'react';
 import { useNavigate } from 'react-router-dom';
-const Search = ({changeQuery}) => {
+const Search = ({changeQuery, fetchData}) => {
     const [query, setQuery] = useState("");
     const navigate = useNavigate();
 
@@ -10,6 +10,7 @@ const Search = ({changeQuery}) => {
 
     const handleSubmit = (e) => {
         e.preventDefault();
+        fetchData(query);
         changeQuery(query);
         navigate(`/search/${query}`);
         e.currentTarget.reset();
