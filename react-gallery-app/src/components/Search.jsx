@@ -1,6 +1,13 @@
+import { useState } from 'react';
 const Search = () => {
+    const [query, setQuery] = useState("");
+
+    const handleSubmit = e => {
+        e.preventDefault();
+        e.currentTarget.reset();
+    }
     return (
-            <form className='search-form'>
+            <form className='search-form' onSubmit={e=>handleSubmit(e)}>
                 <input
                     type="search"
                     name="search"
