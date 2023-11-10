@@ -18,7 +18,7 @@ function App() {
   const [photos, setPhotos] = useState([]);
   const [query, setQuery] = useState(["cats"]);
 
-  // Function that fetches data from the Flickr API
+// Function that fetches data from the Flickr API
   const fetchData = (query) => {
     let activeFetch = true;
       axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
@@ -58,7 +58,6 @@ function App() {
   const handleQueryChange = (query) => {
     setQuery(query);
   };
-
  
   return (
     <div className='container'>
@@ -66,12 +65,11 @@ function App() {
       <Nav />
       <Routes>
       <Route path='/' element={<Navigate to='/cats' />} />
-        <Route path='/cats' element={<PhotoList data={cats} query={"cats"} />} />
-        <Route path='/dogs' element={<PhotoList data={dogs} query={"dogs"}/>} />
-        <Route path='/computers' element={<PhotoList data={computers} query={"computers"}/>} />
-        <Route path='/search/:query' element={<PhotoList data={photos} query={"photos"}/>}/>
+        <Route path='/cats' element={<PhotoList data={cats} query={"cats"} title={"Cats"} />} />
+        <Route path='/dogs' element={<PhotoList data={dogs} query={"dogs"} title={"Dogs"}/>} />
+        <Route path='/computers' element={<PhotoList data={computers} query={"computers"} title={"Computers"}/>} />
+        <Route path='/search/:query' element={<PhotoList data={photos} query={"photos"} title={query}/>}/>
       </Routes>
-      
       
       <div className='photo-container'>
         <Photo />

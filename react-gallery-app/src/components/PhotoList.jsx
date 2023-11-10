@@ -1,7 +1,7 @@
 import Photo from "./Photo"
 import PhotoNotFound from "./PhotoNotFound";
 
-const PhotoList = ({data}) => {
+const PhotoList = ({data, title}) => {
   let photos;
   console.log(data)
   if (data.length > 0) {
@@ -12,7 +12,7 @@ const PhotoList = ({data}) => {
  
   return (
     <div className="photo-container">
-      <h2>Results</h2>
+      <h2>{title}</h2>
       <ul>{photos}</ul>
     </div>
   );

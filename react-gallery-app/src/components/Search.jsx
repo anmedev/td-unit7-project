@@ -8,6 +8,7 @@ const Search = ({changeQuery}) => {
         setQuery(e.target.value);
     }
 
+// Creates an event handler that will trigger when the search bar is used.
     const handleSubmit = (e) => {
         e.preventDefault();
         changeQuery(query);
