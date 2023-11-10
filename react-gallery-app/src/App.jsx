@@ -10,7 +10,6 @@ import PhotoList from './components/PhotoList.jsx'
 import {Route, Routes} from 'react-router-dom'
 import { Navigate } from 'react-router-dom'
 
-
 function App() {
  // Creates States and Setter Funcs
   const [cats, setCats] = useState([]);
@@ -19,11 +18,9 @@ function App() {
   const [photos, setPhotos] = useState([]);
   const [query, setQuery] = useState(["cats"]);
 
-  
-   
+  // Function that fetches data from the Flickr API
   const fetchData = (query) => {
     let activeFetch = true;
-    // axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       axios.get(`https://www.flickr.com/services/rest/?method=flickr.photos.search&api_key=${apiKey}&tags=${query}&per_page=24&format=json&nojsoncallback=1`)
       .then(response => {
         if (activeFetch) {
