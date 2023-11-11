@@ -16,7 +16,7 @@ function App() {
   const [dogs, setDogs] = useState([]);
   const [computers, setComputers] = useState([]);
   const [photos, setPhotos] = useState([]);
-  const [query, setQuery] = useState(["cats"]);
+  const [query, setQuery] = useState("cats");
 
 // Function that fetches data from the Flickr API
   const fetchData = (query) => {
@@ -65,10 +65,10 @@ function App() {
       <Nav />
       <Routes>
       <Route path='/' element={<Navigate to='/cats' />} />
-        <Route path='/cats' element={<PhotoList data={cats} query={"cats"} title={"Cats"} />} />
-        <Route path='/dogs' element={<PhotoList data={dogs} query={"dogs"} title={"Dogs"}/>} />
-        <Route path='/computers' element={<PhotoList data={computers} query={"computers"} title={"Computers"}/>} />
-        <Route path='/search/:query' element={<PhotoList data={photos} query={"photos"} title={query}/>}/>
+        <Route path='/cats' element={<PhotoList data={cats} title={"Cats"} />} />
+        <Route path='/dogs' element={<PhotoList data={dogs} title={"Dogs"}/>} />
+        <Route path='/computers' element={<PhotoList data={computers} title={"Computers"}/>} />
+        <Route path='/search/:query' element={<PhotoList data={photos} title={query}/>}/>
       </Routes>
       
       <div className='photo-container'>
